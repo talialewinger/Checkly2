@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "702546793372",
-    "project_id": "checkly-76ee3",
-    "storage_bucket": "checkly-76ee3.firebasestorage.app"
+    "project_number": "741179578695",
+    "project_id": "checkly-hw1",
+    "storage_bucket": "checkly-hw1.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:702546793372:android:8d7af072daba86f2a5ee59",
+        "mobilesdk_app_id": "1:741179578695:android:3934e9253cf664c3859462",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.example.checkly"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCdkHXwggKpE0Ie6rOdlmNlozuMtEHvvlM"
+          "current_key": "AIzaSyDQYgcs-S8nAJpF4lEkBiWFbJuxK6IFiNM"
         }
       ],
       "services": {

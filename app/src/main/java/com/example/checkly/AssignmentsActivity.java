@@ -1,5 +1,8 @@
 package com.example.checkly;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+import android.os.Bundle;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,6 +15,7 @@ import com.example.checkly.data.AssignmentRepository;
 import com.example.checkly.models.Assignment;
 
 public class AssignmentsActivity extends AppCompatActivity {
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     // Adapter is responsible for taking assignment data and displaying it in the RecyclerView
     private AssignmentAdapter adapter;
@@ -19,6 +23,11 @@ public class AssignmentsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        bundle.putString("screen_name", "Assignments Screen");
+
+        mFirebaseAnalytics.logEvent("assignments_screen_opened", bundle);
 
         // Connect this activity to the XML layout file (activity_assignments.xml)
         setContentView(R.layout.activity_assignments);
