@@ -4,7 +4,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -64,6 +63,10 @@ public class AssignmentsActivity extends AppCompatActivity {
 
         // Attach the adapter to the RecyclerView so the data appears on screen
         recyclerView.setAdapter(adapter);
+
+        AssignmentRepository.getInstance().loadAssignmentsFromFirestore(() -> {
+            adapter.notifyDataSetChanged();
+        });
     }
 
     @Override
