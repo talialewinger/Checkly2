@@ -12,6 +12,7 @@ import com.example.checkly.models.Assignment;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 public class AssignmentDetailsActivity extends AppCompatActivity {
 
@@ -31,6 +32,12 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
         TextView dueDateText = findViewById(R.id.detailsDueDate);
         TextView priorityText = findViewById(R.id.detailsPriority);
         Button toggleButton = findViewById(R.id.btnToggleComplete);
+
+        Button crashButton = toggleButton;
+
+        crashButton.setOnClickListener(v -> {
+            throw new RuntimeException("FORCED TEST CRASH FOR FIREBASE CRASHLYTICS");
+        });
 
         // Get the assignment ID that was passed from AssignmentsActivity
         String assignmentId = getIntent().getStringExtra("assignment_id");
@@ -60,19 +67,13 @@ public class AssignmentDetailsActivity extends AppCompatActivity {
             updateButtonText(toggleButton);
         }
 
-        // When the user clicks the button, toggle the completed status
+
+
+        // When the user clicks the button, force a test crash for Crashlytics
         toggleButton.setOnClickListener(v -> {
             if (assignment != null) {
-
-                // Reverse the current completed state:
-                // true becomes false, false becomes true
                 assignment.setCompleted(!assignment.isCompleted());
-
-                // Update the button text so it reflects the new state
                 updateButtonText(toggleButton);
-
-                // Close this screen and return to the main list
-                // The list will refresh in onResume()
                 finish();
             }
         });
